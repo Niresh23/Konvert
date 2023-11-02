@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Konvert</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="popular_fragment_label">First Fragment</string>
+    <string name="favorite_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="popular_title">Popular</string>
+    <string name="favorite_title">Favorite</string>
+    <string name="lorem_ipsum">FF</string>
+</resources>

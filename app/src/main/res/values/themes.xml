@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Konvert" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Theme.Konvert" parent="Base.Theme.Konvert" />
+
+    <style name="TextStyle.Title" parent="TextStyle">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextStyle.Content" parent="TextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextStyle"></style>
+</resources>

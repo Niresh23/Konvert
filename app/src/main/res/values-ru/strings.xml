@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Konvert</string>
+    <string name="action_settings">Настройки</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="popular_fragment_label">Первый фрагмент</string>
+    <string name="favorite_fragment_label">Второй фрагмент</string>
+    <string name="next">Следующий</string>
+    <string name="previous">Пердыдущий</string>
+    <string name="popular_title">Популярное</string>
+    <string name="favorite_title">Избранное</string>
+    <string name="lorem_ipsum">АА</string>
+</resources>
