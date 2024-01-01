@@ -5,10 +5,10 @@ import com.niresh23.konvert.model.SymbolsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ExchangeratesService {
+interface ExchangeRatesService {
     @GET("symbols")
     suspend fun getSymbols(): SymbolsResponse
 
     @GET("latest")
-    suspend fun getLatest(@Query("base") base: String, @Query("symbols") symbols: String): LatestResponse
+    suspend fun getLatest(@Query("base") base: String): LatestResponse
 }

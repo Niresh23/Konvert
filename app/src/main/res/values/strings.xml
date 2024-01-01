@@ -9,4 +9,8 @@
     <string name="popular_title">Popular</string>
     <string name="favorite_title">Favorite</string>
     <string name="lorem_ipsum">FF</string>
+    <string name="home_content_description">Home</string>
+    <string name="favorite_content_description">Favorite</string>
+    <string name="chart_content_decription">Chart</string>
+    <string name="swap_icon_description">Swap currencies</string>
 </resources>

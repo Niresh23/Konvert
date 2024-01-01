@@ -2,8 +2,10 @@ package com.niresh23.konvert.di
 
 import com.niresh23.konvert.repository.ILocaleRepository
 import com.niresh23.konvert.repository.IRemoteRepository
+import com.niresh23.konvert.repository.IRepository
 import com.niresh23.konvert.repository.LocalRepositoryImpl
 import com.niresh23.konvert.repository.RemoteRepositoryImpl
+import com.niresh23.konvert.repository.RepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +20,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindsLocalRepository(repository: LocalRepositoryImpl): ILocaleRepository
+
+    @Binds
+    abstract fun bindRepository(repository: RepositoryImpl): IRepository
 }

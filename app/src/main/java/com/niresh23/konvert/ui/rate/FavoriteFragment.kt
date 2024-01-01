@@ -39,12 +39,10 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        viewModel.requestSymbols()
-        viewModel.requestLatestRate()
+        viewModel.onCreateView()
         observe()
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ratesRv.layoutManager = LinearLayoutManager(requireContext())

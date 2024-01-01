@@ -1,43 +1,20 @@
 package com.niresh23.konvert.repository
 
 import com.niresh23.konvert.common.safeApiCall
-import com.niresh23.konvert.model.Rate
-import com.niresh23.konvert.model.Symbol
-import com.niresh23.konvert.api.ExchangeratesService
+import com.niresh23.konvert.api.ExchangeRatesService
+import com.niresh23.konvert.model.LatestResponse
+import com.niresh23.konvert.model.SymbolsResponse
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @ViewModelScoped
 class RemoteRepositoryImpl @Inject constructor(
-    private val service: ExchangeratesService,
+    private val service: ExchangeRatesService,
 ) : IRemoteRepository {
-    override fun getSymbols(): Flow<Result<List<Symbol>>> =
+    override fun getSymbols(): Flow<Result<SymbolsResponse>> =
         safeApiCall { service.getSymbols() }
-            .map { result ->
-                result.map { response ->
-                    if (response.success) {
-                        response.symbols.entries.map { entry ->
-                            Symbol(entry.key, entry.value)
-                        }
-                    } else {
-                        emptyList()
-                    }
-            }
-        }
 
-    override fun getRates(base: String, symbols: String): Flow<Result<List<Rate>>> =
-        safeApiCall { service.getLatest(base, symbols) }
-            .map { result ->
-                result.map { response ->
-                    if (response.success) {
-                        response.rates.entries.map { entry ->
-                            Rate(entry.key, entry.value)
-                        }
-                    } else {
-                        emptyList()
-                    }
-                }
-            }
+    override fun getLatestRates(base: String): Flow<Result<LatestResponse>> =
+        safeApiCall { service.getLatest(base) }
 }

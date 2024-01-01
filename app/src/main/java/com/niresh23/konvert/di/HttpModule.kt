@@ -1,7 +1,7 @@
 package com.niresh23.konvert.di
 
 import com.niresh23.konvert.common.Constants
-import com.niresh23.konvert.api.ExchangeratesService
+import com.niresh23.konvert.api.ExchangeRatesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit
 object HttpModule {
 
     @Provides
-    fun createExchangeratesService(retrofit: Retrofit): ExchangeratesService =
-        retrofit.create(ExchangeratesService::class.java)
+    fun createExchangeratesService(retrofit: Retrofit): ExchangeRatesService =
+        retrofit.create(ExchangeRatesService::class.java)
 
     @Provides
     fun provideRetrofit(

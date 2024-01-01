@@ -5,5 +5,5 @@ data class LatestResponse(
     val base: String = "",
     val date: String = "",
     val rates: Map<String, Float> = emptyMap(),
-    val timestamp: Int = 0,
+    val timestamp: Long = 0,
 ) : IResponse

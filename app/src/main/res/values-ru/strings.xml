@@ -10,4 +10,8 @@
     <string name="popular_title">Популярное</string>
     <string name="favorite_title">Избранное</string>
     <string name="lorem_ipsum">АА</string>
+    <string name="home_content_description">Старт</string>
+    <string name="favorite_content_description">Избранное</string>
+    <string name="chart_content_decription">График</string>
+    <string name="swap_icon_description">Переставить валюты</string>
 </resources>

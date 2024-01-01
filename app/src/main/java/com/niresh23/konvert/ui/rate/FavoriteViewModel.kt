@@ -46,7 +46,7 @@ class FavoriteViewModel @Inject constructor(
                 localRepository.deleteFavoriteRate(rate)
             } else {
                 rate.isFavorite = true
-                localRepository.insertFavoriteRate(rate)
+                localRepository.insertRate(rate)
             }
 
             flow.collectLatest { result ->
@@ -66,12 +66,43 @@ class FavoriteViewModel @Inject constructor(
         }
     }
 
+    fun onCreateView() {
+        val base = _state.value.base
+        val symbols = _state.value.symbols
+
+        viewModelScope.launch {
+            remoteRepository.getRates(base, symbols).zip(localRepository.getAllRates()) { remoteResult, localResul ->
+                if(remoteResult.isSuccess) {
+                    val favoriteList = localResul.getOrDefault(emptyList()).map { it.code }
+                    remoteResult.map { remoteList ->
+                        remoteList.map {
+                            it.isFavorite = favoriteList.contains(it.code)
+                            it
+                        }
+                    }
+                } else {
+                    remoteResult
+                }
+            }.collectLatest { result ->
+                if (result.isSuccess) {
+                    val data = result.getOrDefault(emptyList())
+                    _state.value = _state.value.copy(rateList = data)
+                    _ratesListFlow.emit(data)
+                } else {
+                    result.exceptionOrNull()
+                }
+
+                this.cancel()
+            }
+        }
+    }
+
     fun requestLatestRate() {
         val base = _state.value.base
         val symbols = _state.value.symbols
 
         viewModelScope.launch {
-            remoteRepository.getRates(base, symbols).zip(localRepository.getAllFavoritesRates()) { remoteResult, localResul ->
+            remoteRepository.getRates(base, symbols).zip(localRepository.getAllRates()) { remoteResult, localResul ->
                 if(remoteResult.isSuccess) {
                     val favoriteList = localResul.getOrDefault(emptyList()).map { it.code }
                     remoteResult.map { remoteList ->
